@@ -13,7 +13,7 @@ func testTimeZone(t *testing.T, timezone string) {
 	}
 
 	tt := time.Now().In(loc)
-	pt, err := CurTime(timezone)
+	pt, err := CurrTime(timezone)
 	if err != nil {
 		t.Fatal(err)
 	}
