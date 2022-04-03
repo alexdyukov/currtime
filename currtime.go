@@ -45,7 +45,7 @@ func getLocation(timezone string) (*time.Location, error) {
 	return loc, nil
 }
 
-func CurTime(timezone string) (time.Time, error) {
+func CurrTime(timezone string) (time.Time, error) {
 	loc, err := getLocation(timezone)
 	if err != nil {
 		return time.Time{}, err
