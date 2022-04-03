@@ -1,2 +1,2 @@
-# curtime
-curtime is a simple go package
+# currtime
+currtime is a simple go package
