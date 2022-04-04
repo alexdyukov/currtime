@@ -9,19 +9,19 @@ import (
 var locMutex sync.RWMutex
 var locCache map[string]*time.Location
 
-const DefaultLocation string = "UTC"
+const DefaultTimezone string = "UTC"
 const packageName string = "currtime"
 
 func init() {
 	locMutex = sync.RWMutex{}
 	locCache = map[string]*time.Location{}
 
-	loc, err := time.LoadLocation(DefaultLocation)
+	loc, err := time.LoadLocation(DefaultTimezone)
 	if err != nil {
-		panic(packageName + ": cannot load timezone \"" + DefaultLocation + "\" with package \"time\": " + fmt.Sprint(err))
+		panic(packageName + ": cannot load timezone \"" + DefaultTimezone + "\" with package \"time\": " + fmt.Sprint(err))
 	}
 
-	locCache[DefaultLocation] = loc
+	locCache[DefaultTimezone] = loc
 }
 
 func getLocation(timezone string) (*time.Location, error) {
@@ -45,7 +45,7 @@ func getLocation(timezone string) (*time.Location, error) {
 	return loc, nil
 }
 
-func CurrTime(timezone string) (time.Time, error) {
+func GetTime(timezone string) (time.Time, error) {
 	loc, err := getLocation(timezone)
 	if err != nil {
 		return time.Time{}, err

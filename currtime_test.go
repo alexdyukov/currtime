@@ -6,14 +6,14 @@ import (
 	"time"
 )
 
-func testTimeZone(t *testing.T, timezone string) {
+func testTimezone(t *testing.T, timezone string) {
 	loc, err := time.LoadLocation(timezone)
 	if err != nil {
 		t.Fatal(err)
 	}
 
 	tt := time.Now().In(loc)
-	pt, err := CurrTime(timezone)
+	pt, err := GetTime(timezone)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -32,10 +32,10 @@ func testTimeZone(t *testing.T, timezone string) {
 	}
 }
 
-func TestDefaultTimeZone(t *testing.T) {
-	testTimeZone(t, DefaultLocation)
+func TestDefaultTimezone(t *testing.T) {
+	testTimezone(t, DefaultTimezone)
 }
 
 func TestLosAngeles(t *testing.T) {
-	testTimeZone(t, "America/Los_Angeles")
+	testTimezone(t, "America/Los_Angeles")
 }
